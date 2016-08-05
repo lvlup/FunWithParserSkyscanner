@@ -1,0 +1,40 @@
+﻿@model ParserFlights.ViewModels.RouteInfoVM
+@{
+    ViewBag.Title = "Результаты поиска";
+}
+
+@{
+    if (@Model == null)
+    {
+        <h2>Ничего не найдено</h2>
+    }
+    else
+    {
+        <h2>Данные рейса</h2>
+        <div class="item">
+            @Html.Label("Цена")
+            @Html.DisplayFor(r => @Model.Price))
+        </div>
+
+        foreach (var flight in @Model.Routes)
+        {
+            <div class="item">
+                @Html.Label("Авиакомпания")
+                @Html.DisplayFor(r => flight.AviaCompanyName)
+            </div>
+            <div class="item">
+                @Html.Label("Номер рейса")
+                @Html.DisplayFor(r => flight.RouteNumber)
+            </div>
+
+            <div class="item">
+                @Html.Label("Время отбытия")
+                @Html.DisplayFor(r => flight.DepartureTime)
+            </div>
+            <div class="item">
+                @Html.Label("Время прибытия")
+                @Html.DisplayFor(r => flight.ArrivalTime)
+            </div>
+        }
+    }
+}
